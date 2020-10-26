@@ -1,1 +1,11 @@
+#calculator-grid {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    box-shadow: 5px 10px 38px #888888;
+    border-radius: 7px;
+    width: 300px;
+}
+
+
 

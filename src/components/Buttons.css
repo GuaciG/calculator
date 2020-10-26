@@ -1,0 +1,45 @@
+#inputWrapper {
+    display: grid;
+    justify-content: flex-start;
+    align-content: flex-start;
+    grid-template-columns: repeat(4, 80px);
+    grid-template-rows: repeat(5, 60px);
+    
+}
+
+#inputWrapper > button {
+    text-decoration: none;
+    color: #ffffff;
+    border: 1px solid #5e4848;
+    font-size: 2rem;
+}
+
+#inputWrapper > button:hover {
+    cursor: pointer;
+    background-color: #f7cd85;
+    color: #333333;
+}
+
+.span-two {
+    grid-column: span 2;
+    border-radius: 0 0 0 7px;
+}
+
+
+.corner3 {
+    border-radius: 0 0 7px 0;
+}
+
+.all-clear, .negative, .delete {
+    background-color: #4c3b3b;
+}
+
+.number {
+    background-color: #7c7272;
+}
+
+#divide, #multiply, #subtract, #add, #equals {
+    background-color: #ffa500;
+}
+
+
