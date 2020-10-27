@@ -7,19 +7,17 @@ import './App.css';
 
 
 
-const defaultState = {
-    display: 0,
-    operationFlag: false,
-    operationType: null,
-    storedValue: null,  
-};
-
 let lastOperand = undefined;
 
 class App extends React.Component{
   constructor() {
     super();
-    this.state = defaultState;
+    this.state = {
+      display: 0,
+      operationFlag: false,
+      operationType: null,
+      storedValue: null
+    };
 
     this.numberBtnClicked = this.numberBtnClicked.bind(this);
     this.operationBtnClicked = this.operationBtnClicked.bind(this);
@@ -30,9 +28,18 @@ class App extends React.Component{
   numberBtnClicked(value) {
     if (this.state.operationType === '=') {
       if(value !== '.') {
-        this.setState({display: value, operationType: null, operationFlag: false});
-      } else {
-        this.setState({display: '0.', operationType: null, operationFlag: false});
+        this.setState({
+          display: value, 
+          operationType: null, 
+          operationFlag: false
+        });
+      } 
+      else {
+        this.setState({
+          display: '0.', 
+          operationType: null, 
+          operationFlag: false
+        });
       }
       return;
     }
@@ -41,10 +48,14 @@ class App extends React.Component{
       switch(this.state.display) {
         case(0):
           if (value !== '.') {
-            this.setState({display: value});
-
-          } else if (value === '.' && !this.state.display.toString().includes('.')) {
-            this.setState({display: '0.'});
+            this.setState({
+              display: value
+            });
+          } 
+          else if (value === '.' && !this.state.display.toString().includes('.')) {
+            this.setState({
+              display: '0.'
+            });
           }
           break;
 
@@ -52,20 +63,28 @@ class App extends React.Component{
           if (value !== '.' && !this.state.display.toString().includes('.')) {
             let stringValue = this.state.display.toString() + value.toString();
             let newValue = Number.parseFloat(stringValue);
-            this.setState({display: newValue});
+            this.setState({
+              display: newValue
+            });
           } 
           else if (value === '.' && !this.state.display.toString().includes('.')) {
             let stringValue = this.state.display.toString() + value.toString();
-            this.setState({display: stringValue});
+            this.setState({
+              display: stringValue
+            });
           } 
           else if (value === 0  && this.state.display.toString().includes('.')) {
             let stringValue = this.state.display.toString() + '0';
-            this.setState({display: stringValue});
+            this.setState({
+              display: stringValue
+            });
           } 
           else if (value !== '.') {
             let stringValue = this.state.display.toString() + value.toString();
             let newValue = Number.parseFloat(stringValue);
-            this.setState({display: newValue});
+            this.setState({
+              display: newValue
+            });
           }
           break;
 
@@ -74,39 +93,58 @@ class App extends React.Component{
     } else {
       switch(value) {
         case('.'):
-            break;
+          break;
         
         default:
-            let storedValue = Number.parseFloat(this.state.display.toString());
-            this.setState({storedValue: storedValue, operationFlag: false, display: value});
-            break;
+          let storedValue = Number.parseFloat(this.state.display.toString());
+          this.setState({
+            storedValue: storedValue, 
+            operationFlag: false, 
+            display: value
+          });
+          break;
       }
     }
   }
 
   operationBtnClicked(value) {
     if (value === '=') {
-        if (lastOperand !== undefined) {
-          this.setState({
-            display: 0 - this.state.display,
-            operationFlag: this.state.operationFlag,
-            operationType: lastOperand,
-            storedValue: this.state.storedValue, 
-          })
-          lastOperand = undefined;
-        }
-
-        let result = this.performCalculation();
-        this.setState({display: result, storedValue: result, operationFlag: true, operationType: value});
-
-    } else if (!this.state.operationFlag && this.state.storedValue != null) {
-        let result = this.performCalculation();
-        if (result !== undefined) this.setState({display: result, storedValue: result});
-        this.setState({operationFlag: true, operationType: value})
-
-    } else {
-        this.setState({operationType: value, operationFlag: true});
+      if (lastOperand !== undefined) {
+        this.setState({
+          display: this.state.display,
+          operationFlag: this.state.operationFlag,
+          operationType: lastOperand,
+          storedValue: this.state.storedValue 
+        })
         lastOperand = undefined;
+      }
+
+      let result = this.performCalculation();
+        this.setState({
+          display: result, 
+          storedValue: result, 
+          operationFlag: true, 
+          operationType: value
+        });
+
+    } 
+    else if (!this.state.operationFlag && this.state.storedValue != null) {
+      let result = this.performCalculation();
+      if (result !== undefined) 
+        this.setState({
+          display: result, 
+          storedValue: result,
+          operationFlag: true, 
+          operationType: value
+        });
+
+    } 
+    else {
+      this.setState({
+        operationType: value, 
+        operationFlag: true
+      });
+      lastOperand = undefined;
     }
   }
 
@@ -114,24 +152,24 @@ class App extends React.Component{
   performCalculation() {
     if (this.state.display !== undefined) {
         let secondValue = Number.parseFloat(this.state.display.toString());
-        let newValue;
+        var newValue;
         switch(this.state.operationType) {
           case('+'):
-              newValue = this.state.storedValue + secondValue;
+              newValue = Number.parseFloat((this.state.storedValue + secondValue).toFixed(7));
               return newValue;
                 
             case('-'):
-              newValue = this.state.storedValue - secondValue;
+              newValue = Number.parseFloat((this.state.storedValue - secondValue).toFixed(7));
               return newValue;
               
-
             case('X'):
-              newValue = Number.parseFloat((this.state.storedValue * secondValue).toFixed(5));
+              newValue = Number.parseFloat((this.state.storedValue * secondValue).toFixed(7));
               return newValue;
 
             case('÷'):
-              newValue = Number.parseFloat((this.state.storedValue / secondValue).toFixed(5));
+              newValue = Number.parseFloat((this.state.storedValue / secondValue).toFixed(7));
               return newValue;
+
             default:
               break;
         }
@@ -141,19 +179,28 @@ class App extends React.Component{
 
   functionBtnClicked(value) {
     switch(value) {
-        case('CLR'):
-            this.setState({display: 0, storedValue: null, operationType: null, operationFlag: false});
-            break;
+        case('AC'):
+          this.setState({
+            display: 0, 
+            storedValue: null, 
+            operationType: null, 
+            operationFlag: false
+          });
+          break;
         case('DEL'): 
-            let newVal = Number.parseFloat(this.state.display.toString().slice(0, -1));
-            this.setState({display: newVal});
-            if (isNaN(newVal)) this.setState({display: 0});
-            break;
+          let newVal = Number.parseFloat(this.state.display.toString().slice(0, -1));
+          this.setState({
+            display: newVal
+          });
+          if (isNaN(newVal)) this.setState({display: 0});
+          break;
         case('negative'): 
-          this.setState({display: 0 - this.state.display});
-            break;
+          this.setState({
+            display: 0 - this.state.display
+          });
+          break;
         default:
-            break;
+          break;
           
     }
   }

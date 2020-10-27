@@ -8,6 +8,7 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
+    background-image: radial-gradient(circle, #fff, #b4b4b4);
     margin: 0;
     padding: 0; 
     height: 100vh; 

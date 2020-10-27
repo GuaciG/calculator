@@ -4,7 +4,6 @@
     align-content: flex-start;
     grid-template-columns: repeat(4, 80px);
     grid-template-rows: repeat(5, 60px);
-    
 }
 
 #inputWrapper > button {
@@ -12,6 +11,7 @@
     color: #ffffff;
     border: 1px solid #5e4848;
     font-size: 2rem;
+    outline: none;
 }
 
 #inputWrapper > button:hover {
@@ -24,7 +24,6 @@
     grid-column: span 2;
     border-radius: 0 0 0 7px;
 }
-
 
 .corner3 {
     border-radius: 0 0 7px 0;
