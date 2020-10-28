@@ -1,5 +1,5 @@
 #display {
-    background-color: transparent; 
+    background-color: #000; 
     grid-column: 1 / span 4; 
     height: 5rem;
     text-align: right;

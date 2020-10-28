@@ -3,13 +3,14 @@
     display: grid;
     grid-template-columns: repeat(4, 80px);
     grid-template-rows: repeat(5, 60px);
+    gap: 0;
 }
 
 
 button {
     color: #ffffff;
     border: 1px solid #5e4848;
-    font-size: 2rem;
+    font-size: 30px;
     outline: none;
 }
 
