@@ -3,6 +3,9 @@
     display: grid;
     grid-template-columns: repeat(4, 80px);
     grid-template-rows: repeat(5, 60px);
+    column-gap: 0;
+    row-gap: 0;
+    grid-gap: 0;
     gap: 0;
 }
 
@@ -10,7 +13,7 @@
 button {
     color: #ffffff;
     border: 1px solid #5e4848;
-    font-size: 30px;
+    font-size: 2rem;
     outline: none;
 }
 
@@ -31,6 +34,8 @@ button:hover {
 
 .all-clear, .negative, .delete {
     background-color: #4c3b3b;
+    font-size: 1.5rem;
+    text-align: center;
 }
 
 .number {
