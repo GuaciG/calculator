@@ -4,8 +4,8 @@ import './Result.css';
 class Result extends React.Component {
     render () {
         return(
-            <div id="displayWrapper"> 
-              <p id="display" className="main-result">{this.props.display}</p>
+            <div id="display"> 
+              {this.props.display}
             </div>
         );
     }

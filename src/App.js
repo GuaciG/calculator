@@ -208,7 +208,7 @@ class App extends React.Component{
 
   render() {
     return(
-      <div id="appWrapper">
+      <div>
         <Header />
         <div id="calculator-grid">
             <Result display={this.state.display} />

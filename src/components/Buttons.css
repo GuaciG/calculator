@@ -1,27 +1,26 @@
 #inputWrapper {
+    grid-column: 1 / span 4; 
     display: grid;
-    justify-content: flex-start;
-    align-content: flex-start;
     grid-template-columns: repeat(4, 80px);
     grid-template-rows: repeat(5, 60px);
 }
 
-#inputWrapper > button {
-    text-decoration: none;
+
+button {
     color: #ffffff;
     border: 1px solid #5e4848;
     font-size: 2rem;
     outline: none;
 }
 
-#inputWrapper > button:hover {
+button:hover {
     cursor: pointer;
     background-color: #f7cd85;
     color: #333333;
 }
 
 .span-two {
-    grid-column: span 2;
+    grid-column: 1 / span 2;
     border-radius: 0 0 0 7px;
 }
 
