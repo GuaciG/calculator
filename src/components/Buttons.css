@@ -2,10 +2,6 @@
     grid-column: 1 / span 4; 
     display: grid;
     grid-template-columns: repeat(4, 80px);
-    grid-template-rows: repeat(5, 60px);
-    column-gap: 0;
-    row-gap: 0;
-    grid-gap: 0;
     gap: 0;
 }
 
@@ -15,6 +11,7 @@ button {
     border: 1px solid #5e4848;
     font-size: 2rem;
     outline: none;
+    margin: 0;
 }
 
 button:hover {
